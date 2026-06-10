@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSC Cruise 2026</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+:root{
+  --bg:#f6f8fb;
+  --card:#ffffff;
+  --text:#1e293b;
+  --muted:#64748b;
+  --accent:#0ea5e9;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:1000px;margin:auto;padding:16px}
+header{text-align:center;padding:20px 0}
+header h1{margin:0;font-size:2.3rem}
+header p{color:var(--muted)}
+.card{
+  background:var(--card);
+  border-radius:18px;
+  padding:16px;
+  margin-bottom:16px;
+  box-shadow:0 4px 16px rgba(0,0,0,.06);
+}
+#map{height:380px;border-radius:18px;overflow:hidden}
+.section-title{font-size:1.4rem;margin:24px 0 12px}
+.port-image{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:12px;
+  margin:10px 0;
+}
+.button{
+  display:inline-block;
+  background:var(--accent);
+  color:white;
+  text-decoration:none;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:600;
+}
+.meta{color:var(--muted)}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+.gallery img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:12px;
+}
+ul{line-height:1.9}
+.weather{
+  margin:8px 0;
+  color:#0369a1;
+  font-weight:600;
+}
+@media(max-width:700px){
+  .gallery{grid-template-columns:1fr}
+  .port-image{height:180px}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<h1>🚢 MSC Cruise 2026</h1>
+<p>Barcelona • Tunisia • Palermo • Napoli • Livorno • Marseille</p>
+</header>
+
+<div class="card">
+<div id="map"></div>
+</div>
+
+<div class="card">
+<h2>🏠 Lugarer</h2>
+<ul>
+<li><strong>13346</strong> – Mamma, pappa og Iselin</li>
+<li><strong>13334</strong> – Sander og Malin</li>
+</ul>
+</div>
+
+<h2 class="section-title">📍 Destinasjoner</h2>
+
+<div class="card" data-lat="41.3851" data-lon="2.1734">
+<h3>🇪🇸 Barcelona</h3>
+<div class="meta">Mandag 16. juni</div>
+<img class="port-image" src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=80">
+<div class="weather">Henter vær...</div>
+<a class="button" href="https://www.tripadvisor.com/Trips?tt=2029d1b5-86a3-4cd9-9b6b-cbca611c9e33" target="_blank">Tripadvisor</a>
+</div>
+
+<div class="card" data-lat="36.8065" data-lon="10.1815">
+<h3>🇹🇳 Tunisia</h3>
+<div class="meta">Torsdag 18. juni</div>
+<img class="port-image" src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80">
+<div class="weather">Henter vær...</div>
+<a class="button" href="https://www.tripadvisor.com/Trips?tt=f5cd9db0-5ea4-4f7a-abdc-84844de60d3a" target="_blank">Tripadvisor</a>
+</div>
+
+<div class="card" data-lat="38.1157" data-lon="13.3615">
+<h3>🇮🇹 Palermo</h3>
+<div class="meta">Fredag 19. juni</div>
+<img class="port-image" src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80">
+<div class="weather">Henter vær...</div>
+<a class="button" href="https://www.tripadvisor.com/Trips?tt=f5b4f992-a680-4991-806f-15424dcd93c8" target="_blank">Tripadvisor</a>
+</div>
+
+<div class="card" data-lat="40.8518" data-lon="14.2681">
+<h3>🇮🇹 Napoli / Pompeii</h3>
+<div class="meta">Lørdag 20. juni</div>
+<img class="port-image" src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=1200&q=80">
+<div class="weather">Henter vær...</div>
+<p><strong>🚍 Guidet tur kl. 09:30</strong></p>
+<a class="button" href="https://www.tripadvisor.com/Trips?tt=c2f1dbfd-8df0-490a-88b8-65ef38912517" target="_blank">Tripadvisor</a>
+</div>
+
+<div class="card" data-lat="43.5485" data-lon="10.3106">
+<h3>🇮🇹 Livorno / Florence</h3>
+<div class="meta">Søndag 21. juni</div>
+<img class="port-image" src="https://images.unsplash.com/photo-1543429776-2782fcf96061?auto=format&fit=crop&w=1200&q=80">
+<div class="weather">Henter vær...</div>
+<a class="button" href="https://www.tripadvisor.com/Trips?tt=dbe47b4e-e0fe-4966-b89a-1486604a9886" target="_blank">Tripadvisor</a>
+</div>
+
+<div class="card" data-lat="43.2965" data-lon="5.3698">
+<h3>🇫🇷 Marseille / Provence</h3>
+<div class="meta">Mandag 22. juni</div>
+<img class="port-image" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80">
+<div class="weather">Henter vær...</div>
+<a class="button" href="https://www.tripadvisor.com/Trips?tt=3d06f094-e54f-4a0e-bd99-fcae34ee9a13" target="_blank">Tripadvisor</a>
+</div>
+
+<div class="card">
+<h2>🧳 Pakkeliste</h2>
+<ul>
+<li>Pass</li>
+<li>Badetøy</li>
+<li>Medisiner</li>
+<li>Lader</li>
+<li>Solkrem</li>
+<li>Solbriller</li>
+<li>Galla / cocktail / skjorte</li>
+<li>Hvitt antrekk</li>
+<li>Blomsterantrekk</li>
+<li>Pene sko</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🚢 MSC Meraviglia</h2>
+<p><a class="button" href="https://www.msccruises.com/int/our-cruises/ships/msc-meraviglia" target="_blank">Offisiell skipsside</a></p>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80">
+</div>
+</div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map=L.map('map').setView([39,10],4);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);
+
+const route=[
+["Barcelona",41.3851,2.1734],
+["Tunisia",36.8065,10.1815],
+["Palermo",38.1157,13.3615],
+["Napoli",40.8518,14.2681],
+["Livorno",43.5485,10.3106],
+["Marseille",43.2965,5.3698]
+];
+
+const pts=[];
+route.forEach(p=>{
+ L.marker([p[1],p[2]]).addTo(map).bindPopup(p[0]);
+ pts.push([p[1],p[2]]);
+});
+L.polyline(pts,{color:'#0ea5e9',weight:4}).addTo(map);
+
+async function weather(){
+ const cards=document.querySelectorAll('[data-lat]');
+ for(const c of cards){
+   try{
+     const lat=c.dataset.lat, lon=c.dataset.lon;
+     const res=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+     const data=await res.json();
+     c.querySelector('.weather').textContent=`🌤️ ${data.current_weather.temperature}°C • 💨 ${data.current_weather.windspeed} km/t`;
+   }catch(e){
+     c.querySelector('.weather').textContent='Vær ikke tilgjengelig';
+   }
+ }
+}
+weather();
+</script>
+</body>
+</html>
